@@ -4,14 +4,14 @@
             <span><i class="fas fa-user"></i></span>
         </div>
         <div class="form-group">
-            <input type="text" class="form-control item" id="email" placeholder="Email">
+            <input type="text" class="form-control item" id="email" (keyup)="getEmail($event.target.value)" placeholder="Email">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control item" id="password" placeholder="Password">
+            <input type="password" class="form-control item" id="password" (keyup)="getPassword($event.target.value)" placeholder="Password">
         </div> 
         <div class="form-group">
-            <button type="button" class="btn btn-block sign-in">Sign in</button>
-            <a class="btn btn-block sign-up" (click)="sendMessage()">sign up</a>
+            <button type="button" class="btn btn-block sign-in" (click)="toggleIsLoggedIn()">Sign in</button>
+            <a class="btn btn-block sign-up" (click)="togglePageId()">sign up</a>
         </div>
     </form>
      <!--bootstrap col xs sm md lg-->

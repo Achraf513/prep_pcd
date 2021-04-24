@@ -78,4 +78,45 @@ body{
 
 
 
+.right {
+    position: absolute;
+    color: black;
+    right: 0%;
+    transform: translateX(-50%);
+}
 
+#users {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+#users td, #users th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#users tr:nth-child(even){background-color: #f2f2f2;}
+
+#users tr:hover {background-color: #ddd;}
+
+#actions th{ 
+    width: 15%;
+}
+#category th{ 
+    width: 20%;
+}
+#email th{ 
+    width: 35%;
+}
+#password th{ 
+    width: 30%;
+}
+
+#users th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}

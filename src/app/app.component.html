@@ -1,17 +1,13 @@
-<app-log-in 
+<!-- <app-log-in 
     (sendIdEvent)="recievePageId($event)"
     (sendIsLogedIn)="recieveIsLoggedIn($event)"
     *ngIf="pageId==1 && !loggedIn">
 </app-log-in>
 
-<app-register 
-    (sendIdEvent)="recievePageId($event)" 
-    (sendIsLogedIn)="recieveIsLoggedIn($event)"
-    *ngIf="pageId==2 && !loggedIn">
-</app-register>
-
 <app-home 
     (sendIdEvent)="recievePageId($event)"
     (sendIsLogedIn)="recieveIsLoggedIn($event)"
-    *ngIf="pageId==3 && loggedIn"> 
+    *ngIf="pageId==2 && loggedIn"> 
 </app-home>
+ -->
+ <app-home-admin></app-home-admin>

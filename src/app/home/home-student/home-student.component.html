@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <a class="navbar-brand" href="#" style="font-weight: bold; color: greenyellow;">Student</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{subjectList[currentId].title}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" *ngFor="let subject of subjectList"
+                        (click)="clicked(subject.id)">{{subject.title}}</a>
+                </div>
+            </li>
+            <li class="nav-item active right">
+                <a class="nav-link" href="#">Sign out</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<br>
+
+<div class="container mt-2">
+    <div>
+        <h1>{{subjectList[currentId].title}}</h1>
+        <p>{{subjectList[currentId].descr}}</p>
+    </div>
+
+    <div class="mb-3">
+        <h3>Enter your text</h3>
+        <textarea class="form-control" id="message-text"></textarea>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-success pl-4 pr-4 mt-2 justify-content-end">Submit</button>
+            <button data-toggle="modal" data-target="#feedbackModal" class="btn btn-primary pl-4 pr-4 mt-2 ml-2 justify-content-end" *ngIf="submitted">feed back</button>
+        </div>
+    </div>
+ 
+</div>
+ 
+<!-- Modal -->
+<div class="modal fade" id="feedbackModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="sfeedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Understood</button>
+             </div>
+        </div>
+    </div>
+</div>

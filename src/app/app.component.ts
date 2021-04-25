@@ -1,32 +1,24 @@
-import { ViewChild } from '@angular/core';
-import { AfterViewInit } from '@angular/core';
-import { Component } from '@angular/core';
-import { LogInComponent } from './log-in/log-in.component';
+import { SharedService } from './shared-service.service'; 
+import { Component } from '@angular/core'; 
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{ 
-  private _pageId:number;  
-  private _loggedIn:boolean;
+export class AppComponent implements OnInit { 
+  pageId:number;  
+  loggedIn:boolean;
 
-  constructor(){
-    this._pageId = 1;
-    this._loggedIn = false;
-  } 
+  constructor(private sharedService: SharedService){
+    this.pageId = 1;
+    this.loggedIn = false;
+  }  
 
-  recievePageId($event: number) {
-    this._pageId = $event
+  ngOnInit() {
+    this.sharedService.shared_loggedIn.subscribe(loggedIn => this.loggedIn = loggedIn)
+    this.sharedService.shared_pageId.subscribe(pageId => this.pageId = pageId)
   }
-  recieveIsLoggedIn($event: boolean) {
-    this._loggedIn = $event
-  }
-  get pageId(){ return this._pageId;}
-  set pageId(id:number){this._pageId = id;}   
-
-  get loggedIn(){ return this._loggedIn;}
-  set loggedIn(isloggedIn:boolean){this._loggedIn = isloggedIn;}   
 }
 

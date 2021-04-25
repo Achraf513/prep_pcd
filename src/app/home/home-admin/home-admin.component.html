@@ -13,7 +13,7 @@
                 <a class="nav-link" href="#" (click)="setViewUsersOn(false)">Add user</a>
             </li>
             <li class="nav-item active right">
-                <a class="nav-link" href="#">Sign out</a>
+                <a class="nav-link" href="#" (click)="signOut()">Sign out</a>
             </li>
         </ul>
     </div>
@@ -21,22 +21,28 @@
 
 
 <div class="registration-form" *ngIf="!viewUsersOn">
+
     <form>
         <div class="form-group mt-4">
-            <input type="text" class="form-control item email" id="email" placeholder="Email">
+            <input type="text" class="form-control item email" id="email" placeholder="Email" [value]="newUserEmail"
+                (input)="newUserEmail = $event.target.value">
         </div>
+        <!--(ngModelChange)="addUser()" -->
         <div class="form-group">
-            <select class="form-control selectpicker show-tick" id="formControlSelect">
-                <option>Administrator</option>
-                <option>Student</option>
-                <option>Teacher</option>
+            <select class="form-control selectpicker show-tick" id="formControlSelect" [(ngModel)]="newUserCategory"
+                name="selectForm">
+                <option value="Administrator">Administrator</option>
+                <option value="Student">Student</option>
+                <option value="Teacher">Teacher</option>
             </select>
         </div>
+
         <div class="form-group">
-            <input type="password" class="form-control item" id="password" placeholder="Password">
-        </div> 
+            <input type="password" class="form-control item" id="password" placeholder="Password"
+                [value]="newUserPassword" (input)="newUserPassword = $event.target.value">
+        </div>
         <div class="form-group">
-            <button type="button" class="btn btn-block sign-in" >Create account</button>
+            <button type="button" class="btn btn-block sign-in" (click)="addUser()">Create account</button>
         </div>
     </form>
 </div>
@@ -49,17 +55,66 @@
             <th id="category">category</th>
             <th id="actions">actions</th>
         </tr>
-        <ng-container *ngFor="let user of userList" >
-            <tr *ngIf="!user.deleted">
+        <ng-container *ngFor="let user of userList; index as id">
+            <tr>
                 <td>{{user.email}}</td>
                 <td>{{user.password}}</td>
                 <td>{{user.category}}</td>
                 <td id="actions">
-                    <button class="btn btn-danger" (click)="deleteUser(user.userId)">delete</button>
-                    <button class="btn btn-success ml-2 edit-btn">edit</button>
+                    <button class="btn btn-danger" (click)="deleteUser(id)">delete</button>
+                    <button class="btn btn-success ml-2 edit-btn" data-toggle="modal"
+                        data-target="#staticBackdrop" (click)="initEdit(id)">edit</button>
                 </td>
             </tr>
-        </ng-container> 
+        </ng-container>
     </table>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="registration-form">
+                    <div class="form-group">
+                        <input type="text" 
+                            class="form-control item email" 
+                            id="email" 
+                            placeholder="Email" 
+                            [value]="editUserEmail"
+                            (input)="editUserEmail = $event.target.value">
+                    </div>
+                    <!--(ngModelChange)="addUser()" -->
+                    <div class="form-group">
+                        <select class="form-control selectpicker show-tick" 
+                        id="formControlSelect" 
+                        [value]="editUserCategory"
+                        [(ngModel)]="editUserCategory"
+                            name="selectForm">
+                            <option value="Administrator">Administrator</option>
+                            <option value="Student">Student</option>
+                            <option value="Teacher">Teacher</option>
+                        </select>
+                    </div>
+            
+                    <div class="form-group">
+                        <input type="text" class="form-control item" id="password" placeholder="Password"
+                            [value]="editUserPassword" (input)="editUserPassword = $event.target.value">
+                    </div> 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" (click)="updateUser()" data-dismiss="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

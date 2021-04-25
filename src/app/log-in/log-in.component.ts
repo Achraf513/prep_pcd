@@ -1,43 +1,37 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { SharedService } from '../shared-service.service'; 
 
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.scss']
 })
-export class LogInComponent implements OnInit {
-  @Output() sendIdEvent = new EventEmitter<number>();
-  @Output() sendIsLogedIn = new EventEmitter<boolean>();
+export class LogInComponent implements OnInit { 
 
   pageId:number; 
-  isloggedIn: boolean;
+  loggedIn: boolean;
   email:string;
   password:string;
 
-  constructor(){
+  constructor(private sharedService: SharedService){
+    this.email = "";
+    this.password = ""; 
     this.pageId = 1; // 1 stands for log-in screen
-    this.isloggedIn = false;
+    this.loggedIn = false;
   } 
   
-  toggleIsLoggedIn() {
-    console.log(this.email);
-    console.log(this.password);
+  toggleIsLoggedIn() { 
     if(this.email=="achraf.affes@supcom.tn" && this.password=="azerty513"){
       this.pageId = 2;
-      this.isloggedIn = true;  
-      this.sendIsLogedIn.emit(this.isloggedIn);
-      this.sendIdEvent.emit(this.pageId);
+      this.loggedIn = true;   
+      this.sharedService.setPageId(this.pageId)
+      this.sharedService.setLoggedIn(this.loggedIn)
     }
-  }
-  ngOnInit(): void {
-  } 
-  getEmail(val){
-    this.email = val;
-  }
-  getPassword(val){
-    this.password = val;
-  }
+  }   
 
-  
-
+  ngOnInit() {
+    this.sharedService.shared_loggedIn.subscribe(loggedIn => this.loggedIn = loggedIn)
+    this.sharedService.shared_pageId.subscribe(pageId => this.pageId = pageId)
+  }  
 }

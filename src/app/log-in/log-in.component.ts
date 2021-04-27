@@ -13,16 +13,18 @@ export class LogInComponent implements OnInit {
   loggedIn: boolean;
   email:string;
   password:string;
-
+  category:string;
   constructor(private sharedService: SharedService){
     this.email = "";
+    this.category = "";
     this.password = ""; 
     this.pageId = 1; // 1 stands for log-in screen
     this.loggedIn = false;
   } 
   
   toggleIsLoggedIn() { 
-    if(this.email=="achraf.affes@supcom.tn" && this.password=="azerty513"){
+    if(this.email=="" && this.password==""){
+      this.sharedService.setCategory("Teacher");
       this.pageId = 2;
       this.loggedIn = true;   
       this.sharedService.setPageId(this.pageId)
@@ -31,7 +33,8 @@ export class LogInComponent implements OnInit {
   }   
 
   ngOnInit() {
-    this.sharedService.shared_loggedIn.subscribe(loggedIn => this.loggedIn = loggedIn)
-    this.sharedService.shared_pageId.subscribe(pageId => this.pageId = pageId)
+    this.sharedService.shared_loggedIn.subscribe(loggedIn => this.loggedIn = loggedIn);
+    this.sharedService.shared_pageId.subscribe(pageId => this.pageId = pageId);
+    this.sharedService.shared_category.subscribe(category => this.category = category);
   }  
 }

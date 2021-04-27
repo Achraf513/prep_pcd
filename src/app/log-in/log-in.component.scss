@@ -7,17 +7,17 @@ body{
 }
 
 .log-in-form form{
-    background-color: rgb(233, 233, 233);
+    background-color: rgb(255, 255, 255);
     max-width: 600px;
     margin: auto;
     padding: 25px 70px;
     border-radius: 30px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+    box-shadow: 10px 10px 80px rgb(48, 48, 48)
 }
 
 .log-in-form .form-icon{
 	text-align: center;
-    background-color: #5891ff;
+    background-image: linear-gradient(160deg, #70d1a1 0%, #20816b 100%);
     border-radius: 50%;
     font-size: 40px;
     color: white;
@@ -30,31 +30,27 @@ body{
 
 .log-in-form .item{
 	border-radius: 20px;
+    border-width: 2px;
     margin-bottom: 10px;
     height: 50px;
     padding: 10px 20px;
+    background-color: transparent;
 }
-
+.log-in-form .item:hover{
+    border-color: cadetblue;
+}
 .log-in-form .sign-in{
+    background-image: linear-gradient(160deg, #70d1a1 0%, #20816b 100%);
     border-radius: 30px;
     padding: 10px 20px;
     font-size: 18px;
     font-weight: bold;
-    background-color: #5791ff;
     border: none;
     color: white;
     margin-top: 20px;
 }
-
-.log-in-form .sign-up{
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: #989899;
-    border: none;
-    color: white;
-    margin-top: 10px;
+.log-in-form .sign-in:hover{
+    background-image: linear-gradient(160deg, #94dfb9 0%, #49a38e 100%);
 }
    
 @media (max-width: 576px) {

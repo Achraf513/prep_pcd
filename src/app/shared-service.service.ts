@@ -10,6 +10,9 @@ export class SharedService {
   private pageId = new BehaviorSubject(1);
   shared_pageId = this.pageId.asObservable();
 
+  private category = new BehaviorSubject("");
+  shared_category = this.category.asObservable();
+
   constructor() { 
 
   }
@@ -22,4 +25,7 @@ export class SharedService {
     this.pageId.next(pageId)
   }
   
+  setCategory(category: string) {
+    this.category.next(category)
+  }
 }

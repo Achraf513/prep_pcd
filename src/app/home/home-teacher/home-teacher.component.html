@@ -18,3 +18,58 @@
         </ul>
     </div>
 </nav>
+
+<div class="log-in-form">
+    <form>
+        <div class="container mt-2">
+            <div>
+                <h2>Title</h2>
+                <input class="item Title form-control"> 
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-9">
+                    <div class="mb-3">
+                        <h2>Description</h2>
+                        <textarea class="form-control item" id="message-text"></textarea>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="row">
+                        <h2>Grading system</h2>
+                    </div>
+                    <div class="mt-2">
+                        <div class="row grader">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Ponctuation Grade</span>
+                                <input type="number" min="0" max="20" class="item graderInput form-control" placeholder="0">
+                            </div>
+                        </div>
+                        <div class="row grader">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Grammer Grade</span>
+                                <input type="number" min="0" max="20" class="item graderInput form-control" placeholder="0">
+                            </div>
+                        </div>
+                        <div class="row grader">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Semantics Grade</span>
+                                <input type="number" min="0" max="20" class="item graderInput form-control" placeholder="0">
+                            </div>
+                        </div>
+                        <div class="row grader">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Spelling Grade</span>
+                                <input type="number" min="0" max="20" class="item graderInput form-control" placeholder="0">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn submit-button pl-4 pr-4 mt-2 justify-content-end">Add Subject</button>
+        </div>
+    </form>
+    <!--bootstrap col xs sm md lg-->
+</div>

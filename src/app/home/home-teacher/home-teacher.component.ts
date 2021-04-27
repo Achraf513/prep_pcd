@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeTeacherComponent implements OnInit {
   loggedIn:boolean;
-  pageId:number;
-  constructor(private sharedService:SharedService) { }
+  pageId:number; 
+  constructor(private sharedService:SharedService) {  
+  }
 
   ngOnInit(): void {
     this.sharedService.shared_loggedIn.subscribe(loggedIn => this.loggedIn = loggedIn)
@@ -21,5 +22,5 @@ export class HomeTeacherComponent implements OnInit {
     this.loggedIn = false;   
     this.sharedService.setPageId(this.pageId)
     this.sharedService.setLoggedIn(this.loggedIn)
-  }
+  } 
 }

@@ -1,6 +1,77 @@
-.right {
+
+textarea {
+    resize: none;
+    height: 200px;
+    border-width: 3px;
+ }
+
+ .right {
     position: absolute;
     color: black;
     right: 0%;
     transform: translateX(-50%);
+}
+
+.submit-button{
+    background-image: linear-gradient(160deg, #70d1a1 0%, #3e9e88 100%);
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    color: white;
+    margin-top: 20px;
+}
+
+.submit-button:hover{
+    background-image: linear-gradient(160deg, #63f8ae 0%, #65d1b8 100%);
+}
+
+form{
+    background-color: rgb(255, 255, 255);
+    max-width: 85%;
+    margin: auto;
+    padding: 25px 70px; 
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 10px 10px 80px rgb(48, 48, 48)
+}
+
+.item{
+	border-radius: 20px;
+    border-width: 2px;
+    margin-bottom: 10px;
+    height: 200px;
+    padding: 10px 20px;
+    background-color: transparent;
+}
+.graderInput{
+    height: 35px;  
+}
+.Title{
+    height: 50px;
+}
+.item:hover{
+    border-color: cadetblue;
+}
+
+h2{  
+    margin-left: 5px;
+    color: #215655;
+}
+h5{
+    text-align: center;
+    color: #215655;
+}
+.grader{
+    height: 50px;
+    vertical-align: center;
+}
+
+.input-group-text{
+    color: #215655;
+    background-color: transparent;
+    border: none;
+    margin: 0 auto;
+    width: 160px;
 }

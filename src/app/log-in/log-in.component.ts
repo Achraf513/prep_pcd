@@ -24,7 +24,7 @@ export class LogInComponent implements OnInit {
   
   toggleIsLoggedIn() { 
     if(this.email=="" && this.password==""){
-      this.sharedService.setCategory("Teacher");
+      this.sharedService.setCategory("Administrator");
       this.pageId = 2;
       this.loggedIn = true;   
       this.sharedService.setPageId(this.pageId)

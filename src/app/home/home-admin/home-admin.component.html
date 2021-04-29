@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <a class="navbar-brand" href="#" style="font-weight: bold; color: greenyellow;">Administrator</a>
+    <a class="navbar-brand" href="#" style="font-weight: bold; color: #8ceabb;">Administrator</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -19,56 +19,59 @@
     </div>
 </nav>
 
+<form class="containedForm">
 
-<div class="registration-form" *ngIf="!viewUsersOn">
+    <div class="registration-form" *ngIf="!viewUsersOn">
 
-    <form>
-        <div class="form-group mt-4">
-            <input type="text" class="form-control item email" id="email" placeholder="Email" [value]="newUserEmail"
-                (input)="newUserEmail = $event.target.value">
-        </div>
-        <!--(ngModelChange)="addUser()" -->
-        <div class="form-group">
-            <select class="form-control selectpicker show-tick" id="formControlSelect" [(ngModel)]="newUserCategory"
-                name="selectForm">
-                <option value="Administrator">Administrator</option>
-                <option value="Student">Student</option>
-                <option value="Teacher">Teacher</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <input type="password" class="form-control item" id="password" placeholder="Password"
-                [value]="newUserPassword" (input)="newUserPassword = $event.target.value">
-        </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-block sign-in" (click)="addUser()">Create account</button>
-        </div>
-    </form>
-</div>
-
-<div class="container mt-4" *ngIf="viewUsersOn">
-    <table id="users">
-        <tr>
-            <th id="email">email</th>
-            <th id="password">password</th>
-            <th id="category">category</th>
-            <th id="actions">actions</th>
-        </tr>
-        <ng-container *ngFor="let user of userList; index as id">
+        <form>
+            <div class="form-group mt-4">
+                <input type="text" class="form-control item email" id="email" placeholder="Email" [value]="newUserEmail"
+                    (input)="newUserEmail = $event.target.value">
+            </div>
+            <!--(ngModelChange)="addUser()" -->
+            <div class="form-group">
+                <select class="form-control selectpicker show-tick" id="formControlSelect" [(ngModel)]="newUserCategory"
+                    name="selectForm">
+                    <option value="Administrator">Administrator</option>
+                    <option value="Student">Student</option>
+                    <option value="Teacher">Teacher</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <input type="password" class="form-control item" id="password" placeholder="Password"
+                    [value]="newUserPassword" (input)="newUserPassword = $event.target.value">
+            </div>
+            <div class="form-group">
+                <button id="createUserBtn" type="button" class="btn btn-block sign-in" (click)="addUser()">Create account</button>
+            </div>
+        </form>
+    </div>
+    <div class="container mt-4" *ngIf="viewUsersOn">
+        <table id="users">
             <tr>
-                <td>{{user.email}}</td>
-                <td>{{user.password}}</td>
-                <td>{{user.category}}</td>
-                <td id="actions">
-                    <button class="btn btn-danger" (click)="deleteUser(id)">delete</button>
-                    <button class="btn btn-success ml-2 edit-btn" data-toggle="modal"
-                        data-target="#staticBackdrop" (click)="initEdit(id)">edit</button>
-                </td>
+                <th id="email">email</th>
+                <th id="password">password</th>
+                <th id="category">category</th>
+                <th id="actions">actions</th>
             </tr>
-        </ng-container>
-    </table>
-</div>
+            <ng-container *ngFor="let user of userList; index as id">
+                <tr>
+                    <td>{{user.email}}</td>
+                    <td>{{user.password}}</td>
+                    <td>{{user.category}}</td>
+                    <td id="actions">
+                        <button class="btn btn-danger" (click)="deleteUser(id)">delete</button>
+                        <button class="btn btn-success ml-2 edit-btn" data-toggle="modal"
+                            data-target="#staticBackdrop" (click)="initEdit(id)">edit</button>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+    
+    
+</form>
 
 
 <!-- Modal -->

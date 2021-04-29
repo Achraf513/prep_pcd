@@ -10,3 +10,13 @@ textarea {
     right: 0%;
     transform: translateX(-50%);
 }
+
+form{
+    background-color: rgb(255, 255, 255);
+    max-width: 85%;
+    margin: auto;
+    padding: 25px 70px; 
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 10px 10px 80px rgb(48, 48, 48)
+}
